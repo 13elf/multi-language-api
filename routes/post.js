@@ -68,7 +68,7 @@ router.post('/create', async (req, res, next) => {
 
 router.put('/update', async (req, res, next) => {
   const { id, translations } = req.body;
-  console.log("\n\n========\n")
+
 
   const post = await Post.findByPk(id);
   if (!post) {
@@ -94,7 +94,7 @@ router.put('/update', async (req, res, next) => {
   });
 
   await PostTr.bulkCreate(data, { updateOnDuplicate: ["text"] });
-  console.log("\n\n***********\n\n")
+
   await Tag.destroy({
     where: {
       languageId: {
